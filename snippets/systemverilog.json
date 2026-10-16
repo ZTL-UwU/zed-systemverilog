@@ -1,0 +1,87 @@
+{
+  "begin ... end": {
+    "prefix": "begin",
+    "body": ["begin", "  $0", "end"],
+    "description": "begin/end block"
+  },
+  "module": {
+    "prefix": "module",
+    "body": ["module ${1:name} (", "  $2", ");", "  $0", "endmodule"],
+    "description": "Module declaration"
+  },
+  "interface": {
+    "prefix": "interface",
+    "body": ["interface ${1:name} (", "  $2", ");", "  $0", "endinterface"],
+    "description": "Interface declaration"
+  },
+  "package": {
+    "prefix": "package",
+    "body": ["package ${1:name};", "  $0", "endpackage"],
+    "description": "Package declaration"
+  },
+  "class": {
+    "prefix": "class",
+    "body": ["class ${1:name};", "  $0", "endclass"],
+    "description": "Class declaration"
+  },
+  "function": {
+    "prefix": "function",
+    "body": ["function ${1:void} ${2:name}($3);", "  $0", "endfunction"],
+    "description": "Function declaration"
+  },
+  "task": {
+    "prefix": "task",
+    "body": ["task ${1:name}($2);", "  $0", "endtask"],
+    "description": "Task declaration"
+  },
+  "always_ff": {
+    "prefix": "always_ff",
+    "body": ["always_ff @(posedge ${1:clk}) begin", "  $0", "end"],
+    "description": "Sequential always block"
+  },
+  "always_comb": {
+    "prefix": "always_comb",
+    "body": ["always_comb begin", "  $0", "end"],
+    "description": "Combinational always block"
+  },
+  "always_latch": {
+    "prefix": "always_latch",
+    "body": ["always_latch begin", "  $0", "end"],
+    "description": "Latch always block"
+  },
+  "initial": {
+    "prefix": "initial",
+    "body": ["initial begin", "  $0", "end"],
+    "description": "Initial block"
+  },
+  "if": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) begin", "  $0", "end"],
+    "description": "if block"
+  },
+  "for": {
+    "prefix": "for",
+    "body": ["for (int ${1:i} = 0; $1 < ${2:N}; $1++) begin", "  $0", "end"],
+    "description": "for loop"
+  },
+  "foreach": {
+    "prefix": "foreach",
+    "body": ["foreach (${1:array}[${2:i}]) begin", "  $0", "end"],
+    "description": "foreach loop"
+  },
+  "case": {
+    "prefix": "case",
+    "body": ["case (${1:expression})", "  ${2:value}: $3", "  default: $0", "endcase"],
+    "description": "case statement"
+  },
+  "generate for": {
+    "prefix": "generate",
+    "body": ["for (genvar ${1:i} = 0; $1 < ${2:N}; $1++) begin : ${3:gen_block}", "  $0", "end"],
+    "description": "Generate loop"
+  },
+  "fork ... join": {
+    "prefix": "fork",
+    "body": ["fork", "  $0", "join"],
+    "description": "fork/join block"
+  }
+}

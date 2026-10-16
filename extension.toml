@@ -1,0 +1,12 @@
+id = "systemverilog"
+name = "SystemVerilog"
+version = "0.1.0"
+schema_version = 1
+authors = ["ZTL-UwU <zhangtianli2006@gmail.com>"]
+description = "SystemVerilog and Verilog support: syntax highlighting, bracket matching, auto-indentation and block snippets."
+repository = "https://github.com/ZTL-UwU/zed-systemverilog"
+snippets = ["./snippets/systemverilog.json"]
+
+[grammars.systemverilog]
+repository = "https://github.com/gmlarumbe/tree-sitter-systemverilog"
+rev = "3390da8c76a976b6f47d19667accc43e81a1483b" # v0.4.1

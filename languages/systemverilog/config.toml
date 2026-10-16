@@ -1,0 +1,24 @@
+name = "SystemVerilog"
+grammar = "systemverilog"
+path_suffixes = ["sv", "svh", "v", "vh"]
+line_comments = ["// "]
+block_comment = { start = "/*", prefix = "", end = "*/", tab_size = 1 }
+tab_size = 2
+word_characters = ["$", "`"]
+autoclose_before = ";:.,=}])>"
+brackets = [
+  { start = "{", end = "}", close = true, newline = true },
+  { start = "[", end = "]", close = true, newline = true },
+  { start = "(", end = ")", close = true, newline = true },
+  { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
+  { start = "/*", end = " */", close = true, newline = false, not_in = ["string", "comment"] },
+]
+
+# Line-based indentation rules. These keep indentation sensible while a block
+# is still being typed and the syntax tree is incomplete; indents.scm takes over
+# once the code parses.
+increase_indent_pattern = "(^([^/]|/[^/])*\\b(begin|fork)\\s*(:\\s*\\w+\\s*)?(//.*)?$)|(^([^/]|/[^/])*[(\\[{]\\s*(//.*)?$)|(^\\)\\s*;\\s*(//.*)?$)|(^\\s*((virtual|interface|static|automatic|protected|local)\\s+)*(module|macromodule|interface|program|package|class|function|task|covergroup|property|sequence|clocking|checker|config|generate|specify|primitive|table)\\b)|(^\\s*((default|global)\\s+)?clocking\\b)|(^\\s*((unique0?|priority)\\s+)?(case|casez|casex|randcase)\\b)"
+decrease_indent_pattern = "^\\s*((end|endmodule|endinterface|endprogram|endpackage|endclass|endfunction|endtask|endcase|endgenerate|endgroup|endproperty|endsequence|endclocking|endchecker|endconfig|endspecify|endprimitive|endtable|join|join_any|join_none)\\b|[)\\]}])"
+decrease_indent_patterns = [
+  { pattern = "^\\s*else\\b", valid_after = ["if"] },
+]
